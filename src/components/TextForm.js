@@ -3,6 +3,11 @@ import { useState } from "react";
 const TextFrom = ({ mode, setMode }) => {
   const [text, setText] = useState("");
 
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   return (
     <>
       <div className="form-group">
@@ -43,6 +48,9 @@ const TextFrom = ({ mode, setMode }) => {
           className="btn btn-primary m-3"
         >
           Clear Text
+        </button>
+        <button onClick={handleExtraSpaces} className="btn btn-primary m-3">
+          Remove Extra Spaces
         </button>
       </div>
       <h2
