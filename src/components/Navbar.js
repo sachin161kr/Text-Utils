@@ -7,30 +7,44 @@ const Navbar = ({ mode, setMode }) => {
 
   return (
     <nav
+      style={{
+        backgroundColor: "#000",
+      }}
       className={
         mode == true
           ? "navbar navbar-expand-lg navbar-light bg-light"
-          : "navbar navbar-expand-lg navbar-dark bg-dark"
+          : "navbar navbar-expand-lg navbar-dark"
       }
     >
       <a className="navbar-brand" href="/">
         TEXT-UTILS
       </a>
       <div style={{ flexGrow: 1 }}></div>
-      <button
-        onClick={() => {
-          setMode(!mode);
-          if (mode == true) {
-            setBtnText("Light Mode");
-          } else {
-            setBtnText("Dark Mode");
+      <div className="custom-control custom-switch">
+        <input
+          onClick={() => {
+            setMode(!mode);
+            if (mode == true) {
+              setBtnText("Light Mode");
+            } else {
+              setBtnText("Dark Mode");
+            }
+          }}
+          type="checkbox"
+          class="custom-control-input"
+          id="customSwitch1"
+        />
+        <label
+          className={
+            mode == true
+              ? "custom-control-label text-black"
+              : "custom-control-label text-white"
           }
-        }}
-        className="btn btn-primary my-2 my-sm-0"
-        type="submit"
-      >
-        {btnText}
-      </button>
+          htmlFor="customSwitch1"
+        >
+          Light Mode
+        </label>
+      </div>
     </nav>
   );
 };

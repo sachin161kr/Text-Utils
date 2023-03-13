@@ -8,6 +8,12 @@ const TextFrom = ({ mode, setMode }) => {
     setText(newText.join(" "));
   };
 
+  const handleCopy = () => {
+    let text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+
   return (
     <>
       <div className="form-group">
@@ -51,6 +57,9 @@ const TextFrom = ({ mode, setMode }) => {
         </button>
         <button onClick={handleExtraSpaces} className="btn btn-primary m-3">
           Remove Extra Spaces
+        </button>
+        <button onClick={handleCopy} className="btn btn-primary m-3">
+          Copy Text
         </button>
       </div>
       <h2
@@ -98,7 +107,7 @@ const TextFrom = ({ mode, setMode }) => {
         }}
         className="my-3"
       >
-        Preview
+        {text.length == 0 ? "Enter Something To Preview" : "Preview"}
       </h2>
       <p
         style={{
