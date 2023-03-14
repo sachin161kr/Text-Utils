@@ -2,8 +2,14 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import TextFrom from "./components/TextForm";
 
+import Alert from "./components/Alert";
+
 const App = () => {
   const [mode, setMode] = useState(false);
+
+  const [showAlert, setShowAlert] = useState(false);
+
+  const [alertText, setAlertText] = useState("");
 
   return (
     <div
@@ -14,6 +20,7 @@ const App = () => {
       }}
     >
       <Navbar mode={mode} setMode={setMode} />
+      {showAlert && <Alert alertText={alertText} />}
       <div
         style={{
           backgroundColor: mode == true ? "#FFF" : "#000000",
@@ -27,7 +34,12 @@ const App = () => {
         >
           Enter Text To Analyse
         </h1>
-        <TextFrom mode={mode} setMode={setMode} />
+        <TextFrom
+          setAlertText={setAlertText}
+          setShowAlert={setShowAlert}
+          mode={mode}
+          setMode={setMode}
+        />
       </div>
     </div>
   );

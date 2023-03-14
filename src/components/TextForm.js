@@ -1,17 +1,29 @@
 import { useState } from "react";
 
-const TextFrom = ({ mode, setMode }) => {
+import Alert from "./Alert";
+
+const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
   const [text, setText] = useState("");
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    setAlertText("Extra Spaces Removed!!");
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
   };
 
   const handleCopy = () => {
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    setAlertText("Text Copied!!");
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
   };
 
   return (
@@ -34,6 +46,11 @@ const TextFrom = ({ mode, setMode }) => {
         <button
           onClick={() => {
             setText(text.toUpperCase());
+            setAlertText("Changed to Uppercase");
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 2000);
           }}
           className="btn btn-primary m-3"
         >
@@ -42,6 +59,11 @@ const TextFrom = ({ mode, setMode }) => {
         <button
           onClick={() => {
             setText(text.toLowerCase());
+            setAlertText("Changed to Lowercase");
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 2000);
           }}
           className="btn btn-primary m-3"
         >
@@ -50,6 +72,11 @@ const TextFrom = ({ mode, setMode }) => {
         <button
           onClick={() => {
             setText("");
+            setAlertText("Text Cleared");
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 2000);
           }}
           className="btn btn-primary m-3"
         >
