@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Navbar = ({ mode, setMode }) => {
+const Navbar = ({ mode, setMode, setAlertText, setShowAlert }) => {
   //const [mode, setMode] = useState(true);
 
   const [btnText, setBtnText] = useState("Dark Mode");
@@ -26,8 +26,18 @@ const Navbar = ({ mode, setMode }) => {
             setMode(!mode);
             if (mode == true) {
               setBtnText("Light Mode");
+              setAlertText("Dark Mode Enabled");
+              setShowAlert(true);
+              setInterval(() => {
+                setShowAlert(false);
+              }, 2500);
             } else {
               setBtnText("Dark Mode");
+              setAlertText("Light Mode Enabled");
+              setShowAlert(true);
+              setInterval(() => {
+                setShowAlert(false);
+              }, 2500);
             }
           }}
           type="checkbox"

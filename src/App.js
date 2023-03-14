@@ -19,7 +19,12 @@ const App = () => {
         height: "100vh",
       }}
     >
-      <Navbar mode={mode} setMode={setMode} />
+      <Navbar
+        setAlertText={setAlertText}
+        setShowAlert={setShowAlert}
+        mode={mode}
+        setMode={setMode}
+      />
       {showAlert && <Alert alertText={alertText} />}
       <div
         style={{
