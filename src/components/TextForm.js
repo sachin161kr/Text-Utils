@@ -56,20 +56,6 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
         <button
           disabled={!text.length}
           onClick={() => {
-            setText(text.toLowerCase());
-            setAlertText("Changed to Lowercase");
-            setShowAlert(true);
-            setTimeout(() => {
-              setShowAlert(false);
-            }, 2000);
-          }}
-          className="btn btn-primary m-3"
-        >
-          Convert To Lowercase
-        </button>
-        <button
-          disabled={!text.length}
-          onClick={() => {
             setText("");
             setAlertText("Text Cleared");
             setShowAlert(true);
@@ -83,10 +69,17 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
         </button>
         <button
           disabled={!text.length}
-          onClick={handleExtraSpaces}
+          onClick={() => {
+            setText(text.toLowerCase());
+            setAlertText("Changed to Lowercase");
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 2000);
+          }}
           className="btn btn-primary m-3"
         >
-          Remove Extra Spaces
+          Convert To Lowercase
         </button>
         <button
           disabled={!text.length}
@@ -94,6 +87,13 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
           className="btn btn-primary m-3"
         >
           Copy Text
+        </button>
+        <button
+          disabled={!text.length}
+          onClick={handleExtraSpaces}
+          className="btn btn-primary m-3"
+        >
+          Remove Extra Spaces
         </button>
       </div>
       <h2
