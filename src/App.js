@@ -25,7 +25,9 @@ const App = () => {
         mode={mode}
         setMode={setMode}
       />
-      {showAlert && <Alert alertText={alertText} />}
+      <div style={{ height: "50px" }}>
+        {showAlert && <Alert alertText={alertText} />}
+      </div>
       <div
         style={{
           backgroundColor: mode === true ? "#FFF" : "#000000",
@@ -35,9 +37,10 @@ const App = () => {
         <h1
           style={{
             color: mode === true ? "#000" : "#FFF",
+            marginBottom: "20px",
           }}
         >
-          Enter Text To Analyse
+          Try TextUtils - Word Counter | Character Counter | Remove Extra Spaces
         </h1>
         <TextFrom
           setAlertText={setAlertText}

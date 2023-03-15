@@ -4,7 +4,6 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
   const [text, setText] = useState("");
 
   const handleExtraSpaces = () => {
-    if (text.length === 0) return;
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
     setAlertText("Extra Spaces Removed!!");
@@ -43,8 +42,8 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
           placeholder="Enter Text Here!!"
         ></textarea>
         <button
+          disabled={!text.length}
           onClick={() => {
-            if (text.length === 0) return;
             setText(text.toUpperCase());
             setAlertText("Changed to Uppercase");
             setShowAlert(true);
@@ -57,8 +56,8 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
           Convert To Uppercase
         </button>
         <button
+          disabled={!text.length}
           onClick={() => {
-            if (text.length === 0) return;
             setText(text.toLowerCase());
             setAlertText("Changed to Lowercase");
             setShowAlert(true);
@@ -71,8 +70,8 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
           Convert To Lowercase
         </button>
         <button
+          disabled={!text.length}
           onClick={() => {
-            if (text.length === 0) return;
             setText("");
             setAlertText("Text Cleared");
             setShowAlert(true);
@@ -84,10 +83,18 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
         >
           Clear Text
         </button>
-        <button onClick={handleExtraSpaces} className="btn btn-primary m-3">
+        <button
+          disabled={!text.length}
+          onClick={handleExtraSpaces}
+          className="btn btn-primary m-3"
+        >
           Remove Extra Spaces
         </button>
-        <button onClick={handleCopy} className="btn btn-primary m-3">
+        <button
+          disabled={!text.length}
+          onClick={handleCopy}
+          className="btn btn-primary m-3"
+        >
           Copy Text
         </button>
       </div>
