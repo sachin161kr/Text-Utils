@@ -11,7 +11,7 @@ const Navbar = ({ mode, setMode, setAlertText, setShowAlert }) => {
         backgroundColor: "#000",
       }}
       className={
-        mode == true
+        mode === true
           ? "navbar navbar-expand-lg navbar-light bg-light"
           : "navbar navbar-expand-lg navbar-dark"
       }
@@ -24,7 +24,7 @@ const Navbar = ({ mode, setMode, setAlertText, setShowAlert }) => {
         <input
           onClick={() => {
             setMode(!mode);
-            if (mode == true) {
+            if (mode === true) {
               setBtnText("Light Mode");
               setAlertText("Dark Mode Enabled");
               setShowAlert(true);
@@ -46,13 +46,13 @@ const Navbar = ({ mode, setMode, setAlertText, setShowAlert }) => {
         />
         <label
           className={
-            mode == true
+            mode === true
               ? "custom-control-label text-black"
               : "custom-control-label text-white"
           }
           htmlFor="customSwitch1"
         >
-          Light Mode
+          {btnText}
         </label>
       </div>
     </nav>

@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-import Alert from "./Alert";
-
 const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
   const [text, setText] = useState("");
 
   const handleExtraSpaces = () => {
+    if (text.length === 0) return;
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
     setAlertText("Extra Spaces Removed!!");
@@ -34,8 +33,8 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
             setText(e.target.value);
           }}
           style={{
-            background: mode == true ? "#FFF" : "#1f1e1e",
-            color: mode == true ? "#000" : "#fff",
+            background: mode === true ? "#FFF" : "#1f1e1e",
+            color: mode === true ? "#000" : "#fff",
           }}
           value={text}
           className="form-control"
@@ -45,6 +44,7 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
         ></textarea>
         <button
           onClick={() => {
+            if (text.length === 0) return;
             setText(text.toUpperCase());
             setAlertText("Changed to Uppercase");
             setShowAlert(true);
@@ -58,6 +58,7 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
         </button>
         <button
           onClick={() => {
+            if (text.length === 0) return;
             setText(text.toLowerCase());
             setAlertText("Changed to Lowercase");
             setShowAlert(true);
@@ -71,6 +72,7 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
         </button>
         <button
           onClick={() => {
+            if (text.length === 0) return;
             setText("");
             setAlertText("Text Cleared");
             setShowAlert(true);
@@ -91,38 +93,33 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
       </div>
       <h2
         style={{
-          color: mode == true ? "#000" : "#FFF",
+          color: mode === true ? "#000" : "#FFF",
         }}
       >
         Text Summary
       </h2>
-      {text.length == 0 ? (
-        <p
-          style={{
-            color: mode == true ? "#000" : "#FFF",
-          }}
-        >
-          Total Words = 0{" "}
-        </p>
-      ) : (
-        <p
-          style={{
-            color: mode == true ? "#000" : "#FFF",
-          }}
-        >
-          Total Words = {text.split(" ").length}{" "}
-        </p>
-      )}
-      <div
+      <p
         style={{
-          color: mode == true ? "#000" : "#FFF",
+          color: mode === true ? "#000" : "#FFF",
         }}
       >
-        Total Characters = {text.length}{" "}
+        Total Words =
+        {
+          text.split(" ").filter((e) => {
+            return e.length !== 0;
+          }).length
+        }
+      </p>
+      <div
+        style={{
+          color: mode === true ? "#000" : "#FFF",
+        }}
+      >
+        Total Characters = {text.length}
       </div>
       <div
         style={{
-          color: mode == true ? "#000" : "#FFF",
+          color: mode === true ? "#000" : "#FFF",
         }}
         className="my-3"
       >
@@ -130,15 +127,15 @@ const TextFrom = ({ mode, setMode, setShowAlert, setAlertText }) => {
       </div>
       <h2
         style={{
-          color: mode == true ? "#000" : "#FFF",
+          color: mode === true ? "#000" : "#FFF",
         }}
         className="my-3"
       >
-        {text.length == 0 ? "Enter Something To Preview" : "Preview"}
+        {text.length === 0 ? "Enter Something To Preview" : "Preview"}
       </h2>
       <p
         style={{
-          color: mode == true ? "#000" : "#FFF",
+          color: mode === true ? "#000" : "#FFF",
         }}
         className="my-3 "
       >

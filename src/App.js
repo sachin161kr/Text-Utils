@@ -15,7 +15,7 @@ const App = () => {
     <div
       style={{
         flexGrow: 1,
-        backgroundColor: mode == true ? "#FFF" : "#000000",
+        backgroundColor: mode === true ? "#FFF" : "#000000",
         height: "100vh",
       }}
     >
@@ -28,13 +28,13 @@ const App = () => {
       {showAlert && <Alert alertText={alertText} />}
       <div
         style={{
-          backgroundColor: mode == true ? "#FFF" : "#000000",
+          backgroundColor: mode === true ? "#FFF" : "#000000",
         }}
         className="container my-4"
       >
         <h1
           style={{
-            color: mode == true ? "#000" : "#FFF",
+            color: mode === true ? "#000" : "#FFF",
           }}
         >
           Enter Text To Analyse
